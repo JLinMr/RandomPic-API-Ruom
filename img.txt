@@ -1,0 +1,44 @@
+# 二次元图片
+https://example.com/二次元/虚拟歌手/初音未来/2024.png
+https://example.com/二次元/原神/角色/刻晴.jpg
+https://example.com/二次元/场景/学校/教室.jpg
+
+# 风景图片
+https://example.com/风景/自然/森林/春天.jpg
+https://example.com/风景/自然/山脉/日落.jpg
+https://example.com/风景/城市/夜景/东京.jpg
+
+# 动物图片
+https://example.com/动物/猫咪/可爱/睡觉.jpg
+https://example.com/动物/狗狗/幼犬/玩耍.jpg
+
+# 表情包
+https://example.com/表情包/搞笑/动物/猫咪.gif
+https://example.com/表情包/动漫/表情/开心.gif
+
+# 游戏截图
+https://example.com/游戏/我的世界/建筑/城堡.png
+https://example.com/游戏/原神/风景/璃月.jpg
+
+
+# 二次元图片
+https://example.com/images/001.png [初音未来,虚拟歌手,二次元]
+https://example.com/images/002.jpg [原神,刻晴,游戏]
+https://example.com/images/003.jpg [动漫场景,校园]
+
+# 风景图片
+https://example.com/images/004.jpg [风景,自然,森林,春天]
+https://example.com/images/005.jpg [风景,山脉,日落]
+https://example.com/images/006.jpg [城市,夜景,东京]
+
+# 动物图片
+https://example.com/images/007.jpg [猫咪,萌宠,睡觉]
+https://example.com/images/008.jpg [狗狗,幼犬,玩耍]
+
+# 表情包
+https://example.com/images/009.gif [表情包,搞笑,猫咪]
+https://example.com/images/010.gif [表情包,动漫,开心]
+
+# 游戏截图
+https://example.com/images/011.png [游戏,我的世界,建筑]
+https://example.com/images/012.jpg [游戏,原神,璃月]
