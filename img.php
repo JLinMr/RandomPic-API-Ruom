@@ -54,12 +54,13 @@ if ($category || $format) {
     $pics = array_filter($pics, function($url) use ($category, $format) {
         $match = true;
         if ($category) {
-            // 支持两种分类方式：URL路径匹配和标签匹配
             $match = strpos($url, "/{$category}/") !== false || 
                     (preg_match('/\[(.*?)\]/', $url, $m) && in_array($category, explode(',', $m[1])));
         }
         if ($format && $match) {
-            $match = preg_match("/\.{$format}$/i", $url);
+            $clean_url = preg_replace('/\s*\[.*?\]\s*$/', '', $url);
+            $ext = strtolower(pathinfo($clean_url, PATHINFO_EXTENSION));
+            $match = $ext === $format;
         }
         return $match;
     });
@@ -111,7 +112,12 @@ try {
     switch($type) {
         case 'json':
             header('Content-type: application/json; charset=utf-8');
-            echo json_encode(['code' => 200, 'pic' => $pic]);
+            $response = [
+                'code' => 200,
+                'msg' => 'success',
+                'url' => $pic,
+            ];
+            echo json_encode($response);
             break;
         case 'text':
             header('Content-type: text/plain; charset=utf-8');
