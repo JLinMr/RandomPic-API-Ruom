@@ -134,7 +134,7 @@ function getBaseUrl() {
                 <div class="space-y-4">
                     <div>
                         <label class="block text-gray-600 mb-2">返回类型</label>
-                        <select id="type" class="w-full p-2 border rounded">
+                        <select id="type" class="w-full p-2 border rounded border-gray-200 rounded hover:border-blue-500 transition-colors focus:outline-none">
                             <option value="redirect">图片</option>
                             <option value="json">JSON</option>
                             <option value="text">纯文本</option>
@@ -142,11 +142,11 @@ function getBaseUrl() {
                     </div>
                     <div>
                         <label class="block text-gray-600 mb-2">分类筛选（可选）</label>
-                        <input type="text" id="category" class="w-full p-2 border rounded" placeholder="输入分类关键词">
+                        <input type="text" id="category" class="w-full p-2 border border-gray-200 rounded hover:border-blue-500 transition-colors focus:outline-none" placeholder="输入分类关键词">
                     </div>
                     <div>
                         <label class="block text-gray-600 mb-2">格式筛选（可选）</label>
-                        <input type="text" id="format" class="w-full p-2 border rounded" placeholder="如：jpg, png">
+                        <input type="text" id="format" class="w-full p-2 border border-gray-200 rounded hover:border-blue-500 transition-colors focus:outline-none" placeholder="如：jpg, png, webp">
                     </div>
                     <button onclick="testAPI()" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">
                         测试接口
@@ -168,48 +168,99 @@ function getBaseUrl() {
         </section>
         
         <section class="bg-white bg-opacity-80 rounded-lg p-6 shadow hover:shadow-lg transition-shadow mb-8">
-            <h2 class="text-2xl font-semibold mb-6 pb-2">使用说明</h2>
-            <div class="space-y-4">
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">基础 URL</h3>
-                    <code class="bg-gray-100 p-2 rounded block"><?php echo getBaseUrl(); ?>/img.php</code>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">参数说明</h3>
-                    <ul class="list-disc list-inside space-y-2">
-                        <li><code class="bg-gray-100 px-2 py-1 rounded">type</code>: 返回类型（redirect/json/text）</li>
-                        <li><code class="bg-gray-100 px-2 py-1 rounded">category</code>: 分类筛选（可选）</li>
-                        <li><code class="bg-gray-100 px-2 py-1 rounded">format</code>: 格式筛选（可选）</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">支持的分类</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                        <?php foreach ($categories as $category): ?>
-                            <div class="bg-white bg-opacity-80 shadow hover:shadow-md transition-shadow rounded-lg p-3 text-center">
-                                <span class="text-gray-800"><?php echo $category; ?></span>
-                            </div>
-                        <?php endforeach; ?>
+            <h2 class="text-2xl font-semibold mb-6">API 使用文档</h2>
+            
+            <!-- 基础信息卡片 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-blue-50 rounded-lg p-4">
+                    <h3 class="text-lg font-semibold text-blue-700 mb-3">基础 URL</h3>
+                    <div class="bg-white rounded p-3 shadow-sm">
+                        <code class="text-blue-600"><?php echo getBaseUrl(); ?>/img.php</code>
                     </div>
                 </div>
                 
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">示例</h3>
-                    <div class="space-y-2">
-                        <p>1. 直接重定向到随机图片：</p>
-                        <code class="bg-gray-100 p-2 rounded block"><?php echo getBaseUrl(); ?>/img.php</code>
-                        <p>2. 获取 JSON 格式的图片地址：</p>
-                        <code class="bg-gray-100 p-2 rounded block"><?php echo getBaseUrl(); ?>/img.php?type=json</code>
-                        <p>3. 获取指定格式的图片：</p>
-                        <code class="bg-gray-100 p-2 rounded block"><?php echo getBaseUrl(); ?>/img.php?format=webp</code>
-                        <p>4. 获取指定分类的图片：</p>
-                        <code class="bg-gray-100 p-2 rounded block"><?php echo getBaseUrl(); ?>/img.php?category=动漫</code>
-                        <p>5. 混合参数使用示例：</p>
-                        <code class="bg-gray-100 p-2 rounded block"><?php echo getBaseUrl(); ?>/img.php?type=json&format=webp</code>
-                        <code class="bg-gray-100 p-2 rounded block"><?php echo getBaseUrl(); ?>/img.php?type=text&category=风景&format=webp</code>
-                        <code class="bg-gray-100 p-2 rounded block"><?php echo getBaseUrl(); ?>/img.php?category=动漫&format=webp</code>
+                <div class="bg-green-50 rounded-lg p-4">
+                    <h3 class="text-lg font-semibold text-green-700 mb-3">支持的返回格式</h3>
+                    <div class="grid grid-cols-3 gap-2">
+                        <span class="bg-white rounded px-3 py-2 text-center shadow-sm">图片直链</span>
+                        <span class="bg-white rounded px-3 py-2 text-center shadow-sm">JSON</span>
+                        <span class="bg-white rounded px-3 py-2 text-center shadow-sm">纯文本</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 参数说明 -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-4">请求参数</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-3 text-left">参数名</th>
+                                <th class="px-4 py-3 text-left">类型</th>
+                                <th class="px-4 py-3 text-left">说明</th>
+                                <th class="px-4 py-3 text-left">示例</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr>
+                                <td class="px-4 py-3"><code class="bg-gray-100 px-2 py-1 rounded">type</code></td>
+                                <td class="px-4 py-3">string</td>
+                                <td class="px-4 py-3">返回类型：redirect/json/text</td>
+                                <td class="px-4 py-3"><code>type=json</code></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3"><code class="bg-gray-100 px-2 py-1 rounded">category</code></td>
+                                <td class="px-4 py-3">string</td>
+                                <td class="px-4 py-3">图片分类筛选</td>
+                                <td class="px-4 py-3"><code>category=风景</code></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3"><code class="bg-gray-100 px-2 py-1 rounded">format</code></td>
+                                <td class="px-4 py-3">string</td>
+                                <td class="px-4 py-3">图片格式筛选</td>
+                                <td class="px-4 py-3"><code>format=webp</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 分类展示 -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-4">支持的分类</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                    <?php foreach ($categories as $category): ?>
+                    <div class="group">
+                        <div class="flex items-center space-x-2 bg-white px-4 py-3 rounded-lg border border-gray-200 hover:border-blue-500 transition-colors">
+                            <div class="flex-shrink-0 w-2 h-2 rounded-full bg-blue-500"></div>
+                            <span class="text-gray-700 group-hover:text-gray-900 transition-colors">
+                                <?php echo $category; ?>
+                            </span>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <!-- 调用示例 -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">调用示例</h3>
+                <div class="space-y-4">
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-gray-700 mb-2">1. 直接获取随机图片：</p>
+                        <code class="bg-white block p-3 rounded shadow-sm"><?php echo getBaseUrl(); ?>/img.php</code>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-gray-700 mb-2">2. 获取 JSON 格式响应：</p>
+                        <code class="bg-white block p-3 rounded shadow-sm"><?php echo getBaseUrl(); ?>/img.php?type=json</code>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-gray-700 mb-2">3. 组合参数使用：</p>
+                        <code class="bg-white block p-3 rounded shadow-sm mb-2"><?php echo getBaseUrl(); ?>/img.php?type=json&category=动漫&format=webp</code>
+                        <code class="bg-white block p-3 rounded shadow-sm"><?php echo getBaseUrl(); ?>/img.php?type=text&category=风景</code>
                     </div>
                 </div>
             </div>
