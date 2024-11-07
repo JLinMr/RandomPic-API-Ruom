@@ -355,13 +355,15 @@ function getBaseUrl() {
                 .then(({ok, status, text}) => {
                     let content = text;
                     try {
-                        content = JSON.parse(text);
+                        // 如果是 JSON，将其转换为单行字符串
+                        const jsonContent = JSON.parse(text);
+                        content = JSON.stringify(jsonContent);
                     } catch {}
                     
                     textResult.innerHTML = `
                         <div class="${ok ? 'bg-gray-100' : 'bg-red-50'} p-4 rounded">
-                            <div class="${ok ? 'text-gray-800' : 'text-red-600'}">
-                                ${ok ? content : `${getErrorMessage(status)} (${status})`}
+                            <div class="${ok ? 'text-gray-800' : 'text-red-600'} break-all">
+                                ${content}
                             </div>
                         </div>
                     `;
