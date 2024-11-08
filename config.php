@@ -5,13 +5,13 @@ return [
     'rate_window' => 60,    // 时间窗口大小(秒)
     
     // 文件路径配置
-    'image_file' => 'img.txt',              // 存储图片链接的文本文件
+    'image_file' => 'demo.txt',              // 存储图片链接的文本文件 // 命名随意
     'stats_file' => __DIR__ . '/stats.json', // API调用统计数据的JSON文件
     
     // 图片分类配置
     'categories' => [
-        '二次元', '萌图', 'AI', 'pc', 
-        '头像', '风景', '白底横图', '原神'
+        '动漫', '萌图', 'AI', 'pc', 
+        '头像', '风景', '美女', '原神'
     ],
     
     // 静态资源CDN配置

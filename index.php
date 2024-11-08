@@ -46,6 +46,7 @@ function getBaseUrl() {
     <title>随机图片 API</title>
     <link rel="preload" href="<?php echo $cdnAssets['bg']; ?>" as="image">
     <link href="<?php echo $cdnAssets['tailwind']; ?>" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico">
     <script src="<?php echo $cdnAssets['echarts']; ?>"></script>
     <meta name="description" content="随机图片 API 服务提供高质量随机图片接口">
     <meta name="keywords" content="随机图片,API,图片接口">
@@ -182,9 +183,9 @@ function getBaseUrl() {
                 <div class="bg-green-50 rounded-lg p-4">
                     <h3 class="text-lg font-semibold text-green-700 mb-3">支持的返回格式</h3>
                     <div class="grid grid-cols-3 gap-2">
-                        <span class="bg-white rounded px-3 py-2 text-center shadow-sm">图片直链</span>
+                        <span class="bg-white rounded px-3 py-2 text-center shadow-sm">图片</span>
                         <span class="bg-white rounded px-3 py-2 text-center shadow-sm">JSON</span>
-                        <span class="bg-white rounded px-3 py-2 text-center shadow-sm">纯文本</span>
+                        <span class="bg-white rounded px-3 py-2 text-center shadow-sm">文本</span>
                     </div>
                 </div>
             </div>
@@ -259,7 +260,7 @@ function getBaseUrl() {
                     
                     <div class="bg-gray-50 rounded-lg p-4">
                         <p class="text-gray-700 mb-2">3. 组合参数使用：</p>
-                        <code class="bg-white block p-3 rounded shadow-sm mb-2"><?php echo getBaseUrl(); ?>/img.php?type=json&category=动漫&format=webp</code>
+                        <code class="bg-white block p-3 rounded shadow-sm mb-2"><?php echo getBaseUrl(); ?>/img.php?type=json&category=风景&format=jpg</code>
                         <code class="bg-white block p-3 rounded shadow-sm"><?php echo getBaseUrl(); ?>/img.php?type=text&category=风景</code>
                     </div>
                 </div>
